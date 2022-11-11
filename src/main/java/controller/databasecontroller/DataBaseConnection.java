@@ -14,7 +14,7 @@ public class DataBaseConnection {
     */
     public DataBaseConnection(String dbPath) {
         this.dbPath = dbPath;
-        this.conn = null;
+        connect();
     }
 
     /*

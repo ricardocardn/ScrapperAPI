@@ -13,7 +13,6 @@ public class DataBaseQuery implements Query {
 
     public DataBaseQuery(DataBaseConnection dataBaseConnection) {
         this.dataBaseConnection = dataBaseConnection;
-        dataBaseConnection.connect();
     }
 
     @Override
