@@ -9,8 +9,7 @@ public class AddressDeserializer {
     public AddressDeserializer() {}
 
     public Address addressJsonDeserializer(JsonElement json) {
-        Address address = new Address();
-        Address addressJson = new Gson().fromJson(json, Address.class);
-        return addressJson;
+        Address address = new Gson().fromJson(json, Address.class);
+        return address;
     }
 }

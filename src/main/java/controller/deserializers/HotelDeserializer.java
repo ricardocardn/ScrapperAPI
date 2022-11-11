@@ -3,7 +3,6 @@ package controller.deserializers;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import model.Address;
 import model.Hotel;
 
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelDeserializer {
+    private static int id = 0;
 
     public HotelDeserializer() {}
 
@@ -20,6 +20,7 @@ public class HotelDeserializer {
 
         for (JsonElement item : items) {
             Hotel hotel = new Hotel();
+            hotel.setId(id++);
             hotel.setName(item.getAsJsonObject().get("name").getAsString());
             Address address = new AddressDeserializer().addressJsonDeserializer(item.getAsJsonObject().get("address"));
             hotel.setAddress(address);
@@ -28,7 +29,8 @@ public class HotelDeserializer {
                 hotel.setStars(item.getAsJsonObject().get("stars").getAsInt());
                 hotel.setRating(item.getAsJsonObject().get("rating").getAsFloat());
             } catch (Exception e) {}
-            hotel.setReviews(item.getAsJsonObject().get("reviews").getAsInt());
+            hotel.setTotalReviews(item.getAsJsonObject().get("reviews").getAsInt());
+            hotel.setReviews(new ReviewDeserializer().reviewJsonDeserializer(item.getAsJsonObject().get("userReviews")));
             hotels.add(hotel);
         }
         return hotels;
