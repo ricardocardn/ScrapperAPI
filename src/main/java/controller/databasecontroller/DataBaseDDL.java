@@ -99,10 +99,10 @@ public class DataBaseDDL {
             pstmt.setString(5, review.getNegative());
             pstmt.setString(6, review.getTravellerType());
             pstmt.setString(7, review.getRoom());
-            pstmt.setInt(7, review.getNightsStay());
-            pstmt.setString(7, review.getDate());
-            pstmt.setString(7, review.getCountry());
-            pstmt.setString(7, review.getCountryCode());
+            pstmt.setInt(8, review.getNightsStay());
+            pstmt.setString(9, review.getDate());
+            pstmt.setString(10, review.getCountry());
+            pstmt.setString(11, review.getCountryCode());
             pstmt.executeUpdate();
 
         } catch (Exception ex) {

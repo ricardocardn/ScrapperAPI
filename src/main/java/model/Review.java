@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Review {
     private String title;
     private int score;
@@ -115,5 +117,22 @@ public class Review {
 
     public void setPhotos(String[] photos) {
         this.photos = photos;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "title='" + title + '\'' +
+                ", score=" + score +
+                ", positive='" + positive + '\'' +
+                ", negative='" + negative + '\'' +
+                ", travellerType='" + travellerType + '\'' +
+                ", room='" + room + '\'' +
+                ", nightsStay=" + nightsStay +
+                ", date='" + date + '\'' +
+                ", country='" + country + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", photos=" + Arrays.toString(photos) +
+                '}';
     }
 }
