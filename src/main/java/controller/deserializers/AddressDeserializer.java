@@ -2,13 +2,13 @@ package controller.deserializers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import model.Address;
 
-public class AddressDeserializer {
+public class AddressDeserializer implements ObjectDeserializer {
     public AddressDeserializer() {}
 
-    public Address addressJsonDeserializer(JsonElement json) {
+    @Override
+    public Address objectDeserialize(JsonElement json) {
         Address address = new Gson().fromJson(json, Address.class);
         return address;
     }

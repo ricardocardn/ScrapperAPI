@@ -8,15 +8,20 @@ import model.Review;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewDeserializer {
+public class ReviewDeserializer implements ObjectDeserializer {
     public ReviewDeserializer() {}
 
     public List<Review> reviewJsonDeserializer(JsonElement json) {
         List<Review> reviews = new ArrayList<>();
         for (JsonElement review : json.getAsJsonArray()) {
-            reviews.add(new Gson().fromJson(review, Review.class));
+            reviews.add(objectDeserialize(review));
         }
 
         return reviews;
+    }
+
+    @Override
+    public Review objectDeserialize(JsonElement review) {
+        return new Gson().fromJson(review, Review.class);
     }
 }
