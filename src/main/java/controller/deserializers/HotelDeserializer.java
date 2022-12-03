@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelDeserializer implements ObjectDeserializer{
-    private static int id = 0;
+    private static int id = 280;
 
     public HotelDeserializer() {}
 
-    public List<Hotel> hotelJsonDeserializer(String json) {
+    public List<Hotel> hotelsJsonDeserializer(String json) {
         List<Hotel> hotels = new ArrayList<>();
         JsonArray items = new Gson().fromJson(json, JsonArray.class);
 
@@ -23,6 +23,23 @@ public class HotelDeserializer implements ObjectDeserializer{
             hotels.add(hotel);
         }
         return hotels;
+    }
+
+    public Hotel hotelJsonDeserializer(String json, boolean review) {
+        Hotel hotel = new Hotel();
+        JsonElement item = new Gson().fromJson(json, JsonElement.class);
+
+        hotel.setId(id++);
+        hotel.setName(item.getAsJsonObject().get("name").getAsString());
+        hotel.setType(item.getAsJsonObject().get("type").getAsString());
+        hotel.setTotalReviews(item.getAsJsonObject().get("totalReviews").getAsInt());
+        hotel.setStars(item.getAsJsonObject().get("stars").getAsInt());
+        hotel.setRating(item.getAsJsonObject().get("rating").getAsFloat());
+        hotel.setAddress(new Address());
+
+        if (review) hotel.setReviews(new ReviewDeserializer().reviewJsonDeserializer(item.getAsJsonObject().get("userReviews")));
+
+        return hotel;
     }
 
     @Override
