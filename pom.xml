@@ -37,6 +37,14 @@
             <artifactId>activemq-client</artifactId>
             <version>5.17.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.typelevel/forkjoin -->
+        <dependency>
+            <groupId>org.typelevel</groupId>
+            <artifactId>forkjoin</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
