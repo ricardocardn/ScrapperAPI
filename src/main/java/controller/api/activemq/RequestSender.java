@@ -11,7 +11,7 @@ public class RequestSender {
     //URL of the JMS server. DEFAULT_BROKER_URL will just mean that JMS server is on localhost
     private String url = DEFAULT_BROKER_URL;
 
-    private String subject = "requestsQueue"; // Queue Name.You can create any/many queue names as per your requirement.
+    public static String subject; // Queue Name.You can create any/many queue names as per your requirement.
 
     private ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
     private Connection connection;
@@ -35,6 +35,7 @@ public class RequestSender {
             TextMessage message = session
                     .createTextMessage(messageText);
 
+            System.out.println();
             producer.send(message);
 
             connection.close();

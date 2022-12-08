@@ -22,7 +22,7 @@ public class DataReceiver {
             // Getting JMS connection from the server
             ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
             Connection connection = connectionFactory.createConnection();
-            connection.setClientID("id_admin");
+            connection.setClientID("id_admin_2");
             connection.start();
 
             // Creating session for seding messages
